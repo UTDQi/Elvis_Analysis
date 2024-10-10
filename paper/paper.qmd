@@ -3,7 +3,7 @@ title: "Toronto marriage data"
 subtitle: ""
 author: 
   - David Qi
-thanks: "Code and data are available at: https://github.com/UTDQi/STA304week3_starter_folder."
+thanks: "Code and data are available at: https://github.com/UTDQi/reflection5."
 date: today
 date-format: long
 abstract: "Practice document for week three. Includes a brief explaination of the toronto marriage dataset and a graph."
@@ -19,19 +19,20 @@ bibliography: references.bib
 #| message: false
 
 library(tidyverse)
-library(opendatatoronto)
+library(spotifyr)
 
-analysis_data = read.csv("../outputs/data/analysis_data.csv")
-table_month = read.csv("../outputs/data/analysis_data_month.csv")
-table_year = read.csv("../outputs/data/analysis_data_year.csv")
+the_national <- readRDS("data/raw/the_national.rds")
+
+Elvis_Presley = readRDS("data/raw/Elvis_Presley.rds")
+
+Adele = readRDS("data/raw/Adele.rds")
 ```
 
 # Introduction
 
-You can and should cross-reference sections and sub-sections. We use @citeR and @rohan.
+In this paper, we make use of R (@citeR) and the tidyverse package (@tidyverse) with supporting package dplyr(@dplyr) to analysis data form the 2022 ACS(American Community Surveys). The data set is from spotify API (@spotify_api), gathered using spotifyr (@spotifyr).  We have used some information and codes form the book Telling Stories With Data(@tellingstories) on accessing API. 
 
-The remainder of this paper is structured as follows. @sec-data....
-
+The remainder of this paper is structured as follows: We talk about how the data is gained under [Data](#sec-data) section. And describe the method of data estimation we use in the [Method](#method) section. Then, we provide a table that compares our estimation with actual data in the [Results](#results) section. We then discusses reason of error in estimation [Discussion](#discussion) section. 
 
 
 # Data {#sec-data}
@@ -53,7 +54,7 @@ ggplot(table_month, aes(x = month, y = total_marriage)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Rotate x-axis labels
 ```
 
-This is a graph describing the number of Marriages every month from 2011-2023 in Toronto. We can see more people tend to merry during the supper, especially in July and August, and marriage in January and December is the lowest among all months. 
+
 
 \newpage
 

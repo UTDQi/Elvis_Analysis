@@ -1,7 +1,7 @@
 #### Preamble ####
-# Purpose: Downloads and saves the data from opendatatoronto
+# Purpose: Downloads and saves the data from spotify
 # Author: David QI
-# Date: 19 Sep 2024
+# Date: 10 October 2024
 # Contact: david.qi@mail.utoronto.ca
 # License: MIT
 # Pre-requisites: 
@@ -9,21 +9,24 @@
 
 
 #### Workspace setup ####
-library(opendatatoronto)
+library(spotifyr)
 library(tidyverse)
+library(dplyr)
 
 #### Download data ####
-marriage_licence_packages <- search_packages("Marriage Licence Statistics")
+the_national <- get_artist_audio_features("the national")
+saveRDS(the_national, "data/raw/the_national.rds")
 
-marriage_licence_resources <- marriage_licence_packages %>%
-  list_package_resources()
+Elvis_Presley <- get_artist_audio_features("Elvis Presley")
+saveRDS(Elvis_Presley , "data/raw/Elvis_Presley.rds")
 
-the_raw_data <-  marriage_licence_resources$id[1] %>%
-  get_resource()
+Adele <- get_artist_audio_features("Adele")
+saveRDS(Adele , "data/raw/Adele.rds")
+
 
 
 
 #### Save data ####
-write_csv(the_raw_data, "inputs/data/raw_data.csv") 
+#write_csv(the_raw_data, "inputs/data/raw_data.csv") 
 
          

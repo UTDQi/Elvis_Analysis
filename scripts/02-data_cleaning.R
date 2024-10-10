@@ -10,30 +10,19 @@
 
 #### Workspace setup ####
 library(tidyverse)
+library(spotifyr)
 
 #### Clean data ####
-raw_data <- read_csv("inputs/data/raw_data.csv")
+the_national <- readRDS("data/raw/the_national.rds")
 
-step1_data = separate(raw_data,"TIME_PERIOD",c("year","month"))
+Elvis_Presley = readRDS("data/raw/Elvis_Presley.rds")
 
-step2_data = lubridate::ym(raw_data$TIME_PERIOD)
+Adele = readRDS("data/raw/Adele.rds")
 
-step3_data = cbind(step1_data,step2_data)
 
-names(step3_data)[6] = "Time"
 
-cleaned_data = step3_data
 
-before_month =  step3_data %>%
-  filter(Time < as.Date("2024-01-01"))
 
-table_month = step3_data %>%
-  group_by(month) %>%
-  summarize(total_marriage = sum(MARRIAGE_LICENSES))
-
-table_year = step3_data %>%
-  group_by(year) %>%
-  summarize(total_marriage = sum(MARRIAGE_LICENSES))
 
 #### Save data ####
 write_csv(cleaned_data, "outputs/data/analysis_data.csv")
