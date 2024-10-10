@@ -1,5 +1,5 @@
 ---
-title: "Toronto marriage data"
+title: "Analysis on Elvis Presley: Increased Energy Level of The Fans"
 subtitle: ""
 author: 
   - David Qi
@@ -7,7 +7,7 @@ author:
 thanks: "Code and data are available at: https://github.com/UTDQi/Elvis_Analysis"
 date: today
 date-format: long
-abstract: "This paper analysised the albums of Elvis Presley on spotify. We find that "
+abstract: "This paper analysised the albums of Elvis Presley on spotify. We find that as the energy of these albums have increased over the years, similar trend is not seen on tempo. Which indicates that as taste of music of Elvis fans have shifted toward more energetic. The favor of tempo have not changed."
 format: pdf
 number-sections: true
 bibliography: references.bib
@@ -28,7 +28,7 @@ Elvis_Presley <- readRDS(here::here("data/raw/Elvis_Presley.rds"))
 
 # Introduction
 
-Elvis Presley (1935-1977) is an American icon who gained immense popularity worldwide beginning in the 1950s. His enduring fame allows us to analyze how audience tastes have changed over the years.
+Elvis Presley (1935-1977) is an American icon who gained immense popularity worldwide beginning in the 1950s. His enduring fame allows us to analyze how audience tastes have changed over the years. We find that as the energy of these albums have increased over the years, while tempo have stayed constant. Which indicates that as taste of music of Elvis fans have shifted toward more energetic and the favor of tempo have not changed.
 
 In this paper, we make use of R [@citeR] and the tidyverse package [@tidyverse] with supporting package dplyr[@dplyr] to analysis Spotify(An online music platform launched in 2008) around Elvis Presley (1935-1977). The data set is from spotify API [@spotify_api], gathered using spotifyr [@spotifyr].The graph is created using ggplot[@ggplot] and gridExtra[@gridExtra] packages in R. We have used some information and codes form the book Telling Stories With Data[@tellingstories] on accessing API. 
 
@@ -139,7 +139,7 @@ We now turn to analysis the tempo.
 [@fig-tempo] and [@fig-tempo2] shows the change in tempo across the years. 
 
 ```{r}
-#| label: fig-energy
+#| label: fig-tempo
 #| tbl-cap: Change in tempo acrocess the years
 #| include: true
 #| echo: false
@@ -193,6 +193,16 @@ grid.arrange(hist_part1, hist_part2, ncol = 2)
 For tempo, we see a different trend, the tempo of the musics selected to be included in the album of Elvis Presley have not changed much over the times. From [@fig-tempo2], we can see the mean of the tempo(the red dashed lines)  before 2010 is 112.78, and the mean after 2010 have have changed 112.94. Which is a very small change. [@fig-tempo] also showed the Smoothed conditional means close to a straight line, indicating that the tempo have not changed over time
 
 # Conclusions {#conclusion}
+
+Form our [Results](#results) section, we see that the energy of the music have experienced a increase over the years. This signifies that, in the $21^{st}$ century, Elvis Presley songs that are more energetic tend to be selected into new albums, and people tend to make new remixes of these songs that are more energetic.
+
+However, energetic does not mean fast. People's taste of tempo have not changed much over the time. And there is no similar favor over faster music. 
+
+## Limitations
+
+We note that Energy is a variable that is difficult to find the meaning to, and may not perfectly match our instinctive definition of "energy of music". 
+
+Also, this analysis only reflect the change in musical tasted of Elvis Fans, which is very small proportion of the general population, future research may use data on more artists to gain a comprehensive on the subject. 
 
 \newpage
 
