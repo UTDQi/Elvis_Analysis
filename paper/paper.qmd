@@ -1,0 +1,62 @@
+---
+title: "Toronto marriage data"
+subtitle: ""
+author: 
+  - David Qi
+thanks: "Code and data are available at: https://github.com/UTDQi/STA304week3_starter_folder."
+date: today
+date-format: long
+abstract: "Practice document for week three. Includes a brief explaination of the toronto marriage dataset and a graph."
+format: pdf
+number-sections: true
+bibliography: references.bib
+---
+
+
+```{r}
+#| include: false
+#| warning: false
+#| message: false
+
+library(tidyverse)
+library(opendatatoronto)
+
+analysis_data = read.csv("../outputs/data/analysis_data.csv")
+table_month = read.csv("../outputs/data/analysis_data_month.csv")
+table_year = read.csv("../outputs/data/analysis_data_year.csv")
+```
+
+# Introduction
+
+You can and should cross-reference sections and sub-sections. We use @citeR and @rohan.
+
+The remainder of this paper is structured as follows. @sec-data....
+
+
+
+# Data {#sec-data}
+
+Some of our data (@fig-bills) are from @opendatatoronto.
+
+```{r}
+#| label: fig-bills
+#| fig-cap: Month of marriage
+#| echo: false
+
+ggplot(table_month, aes(x = month, y = total_marriage)) +
+  geom_bar(stat = "identity", fill = "steelblue") +
+  labs(title = "Number of Marriages per Month",
+       x = "Month",
+       y = "Number of Marriages") +
+  scale_x_continuous(breaks = 1:12)+
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Rotate x-axis labels
+```
+
+This is a graph describing the number of Marriages every month from 2011-2023 in Toronto. We can see more people tend to merry during the supper, especially in July and August, and marriage in January and December is the lowest among all months. 
+
+\newpage
+
+# References
+
+
