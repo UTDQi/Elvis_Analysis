@@ -24,34 +24,41 @@ library(spotifyr)
 the_national <- readRDS("data/raw/the_national.rds")
 
 Elvis_Presley = readRDS("data/raw/Elvis_Presley.rds")
-
-Adele = readRDS("data/raw/Adele.rds")
 ```
 
 # Introduction
 
-In this paper, we make use of R (@citeR) and the tidyverse package (@tidyverse) with supporting package dplyr(@dplyr) to analysis data form the 2022 ACS(American Community Surveys). The data set is from spotify API (@spotify_api), gathered using spotifyr (@spotifyr).  We have used some information and codes form the book Telling Stories With Data(@tellingstories) on accessing API. 
+In this paper, we make use of R (@citeR) and the tidyverse package (@tidyverse) with supporting package dplyr(@dplyr) to analysis Spotify(An online music platform) around Elvis Presley(American celebrity, 1935-1977). The data set is from spotify API (@spotify_api), gathered using spotifyr (@spotifyr).  We have used some information and codes form the book Telling Stories With Data(@tellingstories) on accessing API. 
 
 The remainder of this paper is structured as follows: We talk about how the data is gained under [Data](#sec-data) section. And describe the method of data estimation we use in the [Method](#method) section. Then, we provide a table that compares our estimation with actual data in the [Results](#results) section. We then discusses reason of error in estimation [Discussion](#discussion) section. 
 
 
 # Data {#sec-data}
-
-Some of our data (@fig-bills) are from @opendatatoronto.
+In this section, we will discuss some aspect of the data dan outline how we will use the data
 
 ```{r}
-#| label: fig-bills
-#| fig-cap: Month of marriage
+#| label: fig-albums
+#| tbl-cap: Comparison of estimated and actual data
+#| include: true
 #| echo: false
+#| warning: false
+#| message: false
 
-ggplot(table_month, aes(x = month, y = total_marriage)) +
-  geom_bar(stat = "identity", fill = "steelblue") +
-  labs(title = "Number of Marriages per Month",
-       x = "Month",
-       y = "Number of Marriages") +
-  scale_x_continuous(breaks = 1:12)+
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Rotate x-axis labels
+
+Elvis_Presley|>
+  select(album_release_date, valence) |>
+  mutate(album_release_date = ymd(album_release_date)) |> 
+  ggplot(aes( x = album_release_date, y = valence)) +
+  geom_point(alpha = 0.3) +
+  geom_smooth() +
+  geom_vline(xintercept = 1977, linetype = "dashed", color = "red", size = 1) +
+  theme_minimal()+
+  labs(
+    x = "Album release date",
+    y = "Valence"
+  ) +
+  scale_color_brewer(palette = "Set1") +
+  theme(legend.position = "bottom")
 ```
 
 
