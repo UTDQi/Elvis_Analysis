@@ -32,7 +32,7 @@ Elvis Presley (1935-1977) is an American icon who gained immense popularity worl
 
 In this paper, we make use of R [@citeR] and the tidyverse package [@tidyverse] with supporting package dplyr[@dplyr] to analysis Spotify(An online music platform launched in 2008) around Elvis Presley (1935-1977). The data set is from spotify API [@spotify_api], gathered using spotifyr [@spotifyr].The graph is created using ggplot[@ggplot] and gridExtra[@gridExtra] packages in R. We have used some information and codes form the book Telling Stories With Data[@tellingstories] on accessing API. 
 
-The remainder of this paper is structured as follows: We discuss the basic aspects of the data in the [Data](#sec-data) section.  Then, we analysis the data in the [Results](#results) section. We then discusses our finding and draw on possible limitations in the [Conclusions](#conclusion) section. 
+The remainder of this paper is structured as follows: We discuss the basic aspects of the data in the [Data](#sec-data) section.  Then, we analysis the data in the [Results](#sec-results) section. We then discusses our finding and draw on possible limitations in the [Conclusions](#sec-conclusion) section. 
 
 
 # Data {#sec-data}
@@ -192,7 +192,7 @@ grid.arrange(hist_part1, hist_part2, ncol = 2)
 ```
 For tempo, we see a different trend, the tempo of the musics selected to be included in the album of Elvis Presley have not changed much over the times. From [@fig-tempo2], we can see the mean of the tempo(the red dashed lines)  before 2010 is 112.78, and the mean after 2010 have have changed 112.94. Which is a very small change. [@fig-tempo] also showed the Smoothed conditional means close to a straight line, indicating that the tempo have not changed over time
 
-# Conclusions {#conclusion}
+# Conclusions {#sec-conclusion}
 
 Form our [Results](#results) section, we see that the energy of the music have experienced a increase over the years. This signifies that, in the $21^{st}$ century, Elvis Presley songs that are more energetic tend to be selected into new albums, and people tend to make new remixes of these songs that are more energetic.
 
