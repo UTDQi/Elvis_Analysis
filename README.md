@@ -1,8 +1,8 @@
-# Reflection 5
+# Analyzing Elvis Presley: The Increasing Energy Levels in Fan Preferences
 
 ## Overview
 
-This repo is for paper on analysis on Reflection 5.
+This repo is for paper on analysis on Elvis Presley data form Spotify.
 
 ## File Structure
 

@@ -7,7 +7,7 @@ author:
 thanks: "Code and data are available at: https://github.com/UTDQi/Elvis_Analysis"
 date: today
 date-format: long
-abstract: "This paper analysised the albums of Elvis Presley on spotify. We find that as the energy of these albums have increased over the years, similar trend is not seen on tempo. Which indicates that as taste of music of Elvis fans have shifted toward more energetic. The favor of tempo have not changed."
+abstract: "This paper analyzed the albums of Elvis Presley (1935-1977) on spotify. We find that as the energy of these albums have increased over the years. Similar trend is not seen on tempo. Which indicates that as taste of music of Elvis fans have shifted toward more energetic? The favor of tempo has not changed."
 format: pdf
 number-sections: true
 bibliography: references.bib
