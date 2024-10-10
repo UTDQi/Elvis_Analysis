@@ -1,6 +1,6 @@
 ---
-title: "Analysis on Elvis Presley: Increased Energy Level of The Fans"
-subtitle: ""
+title: "Analyzing Elvis Presley"
+subtitle: "The Increasing Energy Levels in Fan Preferences"
 author: 
   - David Qi
   - Chendong Fei
