@@ -21,20 +21,24 @@ bibliography: references.bib
 library(tidyverse)
 library(spotifyr)
 
-the_national <- readRDS("data/raw/the_national.rds")
+the_national <- readRDS(here::here("data/raw/the_national.rds"))
 
-Elvis_Presley = readRDS("data/raw/Elvis_Presley.rds")
+Elvis_Presley <- readRDS(here::here("data/raw/Elvis_Presley.rds"))
 ```
 
 # Introduction
 
-In this paper, we make use of R (@citeR) and the tidyverse package (@tidyverse) with supporting package dplyr(@dplyr) to analysis Spotify(An online music platform) around Elvis Presley(American celebrity, 1935-1977). The data set is from spotify API (@spotify_api), gathered using spotifyr (@spotifyr).  We have used some information and codes form the book Telling Stories With Data(@tellingstories) on accessing API. 
+In this paper, we make use of R [@citeR] and the tidyverse package [@tidyverse] with supporting package dplyr[@dplyr] to analysis Spotify(An online music platform launched in 2008) around Elvis Presley(American celebrity, 1935-1977). The data set is from spotify API [@spotify_api], gathered using spotifyr [@spotifyr].The graph is created using ggplot. We have used some information and codes form the book Telling Stories With Data[@tellingstories] on accessing API. 
 
-The remainder of this paper is structured as follows: We talk about how the data is gained under [Data](#sec-data) section. And describe the method of data estimation we use in the [Method](#method) section. Then, we provide a table that compares our estimation with actual data in the [Results](#results) section. We then discusses reason of error in estimation [Discussion](#discussion) section. 
+The remainder of this paper is structured as follows: We talk about how the data is gained under [Data](#sec-data) section.  Then, we provide a table that compares our estimation with actual data in the [Results](#results) section. We then discusses reason of error in estimation [Discussion](#discussion) section. 
 
 
 # Data {#sec-data}
-In this section, we will discuss some aspect of the data dan outline how we will use the data
+In this section, we will discuss some aspect of the data, and outline how we will use the data.
+
+As shown in [@fig-albums], the date of album release span across 1956 to 2024. Note that album release was suspended at 1977, when Elvis Presley passed away, and resumed from 2010 onward. This is due to Spotify's new licensing agreements allowed releases of albums of classic artists. 
+
+There were also many albums released in 1997, 20 years after Elvis Presley passed away. These albums were released to recognize this event.
 
 ```{r}
 #| label: fig-albums
@@ -44,23 +48,41 @@ In this section, we will discuss some aspect of the data dan outline how we will
 #| warning: false
 #| message: false
 
+year = Elvis_Presley %>%
+  mutate(release_year = as.numeric(strtrim(album_release_date,4)))
 
-Elvis_Presley|>
-  select(album_release_date, valence) |>
-  mutate(album_release_date = ymd(album_release_date)) |> 
-  ggplot(aes( x = album_release_date, y = valence)) +
-  geom_point(alpha = 0.3) +
-  geom_smooth() +
+albums_per_year <- year %>%
+  group_by(release_year) %>%
+  summarise(album_count = n())
+
+albums_per_year |>
+  ggplot(aes(x = release_year, y = album_count)) +
+  geom_col(alpha = 0.7) +
   geom_vline(xintercept = 1977, linetype = "dashed", color = "red", size = 1) +
   theme_minimal()+
   labs(
     x = "Album release date",
     y = "Valence"
   ) +
-  scale_color_brewer(palette = "Set1") +
   theme(legend.position = "bottom")
 ```
 
+In this paper, we will analysis these two groups of albums to see how people's tastes have changed over these 30 years. We note that albums released reflect the general taste of the audience at the time, as albums makers tends to select and remix songs according to this taste. 
+
+To reflect the very abstract concept of "taste", we will use data gathered about the liveness, valence and tempo of the music. It is very important to note these data are form the results generated using a machine learning model that we do not have much information about. They may not fully reflect actual "liveness", "valence" or "tempo" of the music. Despite that, they do serve as a useful generalization of these factors. And the fact that data is being used by Spotify itself indicates that it is useful for data analysis.
+
+# Results {#sec-results}
+
+```{r}
+#| label: fig-result
+#| tbl-cap: Comparison of estimated and actual data
+#| include: true
+#| echo: false
+#| warning: false
+#| message: false
+
+
+```
 
 
 \newpage
