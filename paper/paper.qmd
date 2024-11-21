@@ -140,7 +140,7 @@ We now turn to analysis the tempo.
 
 ```{r}
 #| label: fig-tempo
-#| tbl-cap: Change in tempo acrocess the years
+#| fig-cap: Change in tempo acrocess the years
 #| include: true
 #| echo: false
 #| warning: false
@@ -159,7 +159,7 @@ ggplot(Elvis_Presley, aes(x = album_release_year, y = tempo)) +
 ```
 ```{r}
 #| label: fig-tempo2
-#| tbl-cap: Compaing Tempo of The Two Time Periods
+#| fig-cap: Compaing Tempo of The Two Time Periods
 #| include: true
 #| echo: false
 #| warning: false
