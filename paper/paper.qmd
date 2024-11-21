@@ -44,7 +44,7 @@ There were also many albums released in 1997, 20 years after Elvis Presley passe
 
 ```{r}
 #| label: fig-albums
-#| tbl-cap: Albums Released Each Year
+#| fig-cap: Albums Released Each Year
 #| include: true
 #| echo: false
 #| warning: false
@@ -81,7 +81,7 @@ We first analysis the energy.
 
 ```{r}
 #| label: fig-energy
-#| tbl-cap: Change in energy acrocess the years
+#| fig-cap: Change in energy acrocess the years
 #| include: true
 #| echo: false
 #| warning: false
@@ -89,7 +89,7 @@ We first analysis the energy.
 
 # Plot the relationship between two variables
 ggplot(Elvis_Presley, aes(x = album_release_year, y = energy)) +
-  geom_point() +   
+  geom_point(alpha = 0.5,color = 'steelblue') +   
   geom_smooth() +# Scatter plot points
   labs(
        x = "Year Album released", 
@@ -97,9 +97,10 @@ ggplot(Elvis_Presley, aes(x = album_release_year, y = energy)) +
   theme_minimal()                  # Use a minimal theme for the plot
 
 ```
+
 ```{r}
 #| label: fig-energy2
-#| tbl-cap: Compaing Energy of The Two Time Periods
+#| fig-cap: Compaing Energy of The Two Time Periods
 #| include: true
 #| echo: false
 #| warning: false
@@ -130,7 +131,6 @@ hist_part2 <- ggplot(data_part2, aes(x = energy)) +
 # Arrange the two histograms side by side
 grid.arrange(hist_part1, hist_part2, ncol = 2)
 
-
 ```
 Initially, in the pre-1970s era, the energy levels of albums are relatively moderate, with a gradual increase reaching a peak around the 1980s. This trend continues after the year 2010, when the energy levels of albums rises again, reflecting a general increase in the intensity and dynamism of music in more recent years. For instance, as shown in [@fig-energy2], the mean energy level (represented by the red dashed lines) before 2010 is 0.467, while the mean energy level after 2010 has increased to 0.549. Overall, the graph suggests that while music energy has increased over time, more recent albums tend to have higher energy on average.
 
@@ -150,7 +150,7 @@ We now turn to analysis the tempo.
 
 # Plot the relationship between two variables
 ggplot(Elvis_Presley, aes(x = album_release_year, y = tempo)) +
-  geom_point() +   
+  geom_point(alpha = 0.5,color = 'steelblue') +   
   geom_smooth() +# Scatter plot points
   labs(x = "Year Album released", 
        y = "Tempo") +         # Axis labels and title
