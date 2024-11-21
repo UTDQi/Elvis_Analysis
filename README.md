@@ -11,6 +11,12 @@ The repo is structured as:
 -   `paper` contains the files used to generate the paper, including the Quarto document and reference bibliography file, as well as the PDF of the paper. 
 -   `scripts` contains the R scripts used to gather the data.
 -   `other` contains details about LLM chat interactions.
+
+## Statement on LLM usage
+
+The plotting code were written with the help of Chatgpt-4o. The entire chat history is available in other/llms/usage.txt.
+
+
 ## Notes
 If some commit messages are difficult to understand, see in the comment section for detailed descriptions.
 
